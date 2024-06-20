@@ -1,0 +1,16 @@
+.body{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+.landing{
+  margin: 13% 10%;
+}
+.cardstyle{
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  margin-top: 2%;
+}
+.cardBackground{
+  background-color: rgba(127, 255, 180, 0.171);
+}
