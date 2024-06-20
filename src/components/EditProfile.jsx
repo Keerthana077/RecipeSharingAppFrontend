@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NavBar from '../NavBar'
 import axios from 'axios'
-import { date } from 'yup'
 
 const EditProfile = () => {
     const navigate = useNavigate()

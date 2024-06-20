@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import NavBar from "../NavBar";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
-import Search from "../Search";
 
 const HomePage = () => {
   const [data,setData] = useState([])
