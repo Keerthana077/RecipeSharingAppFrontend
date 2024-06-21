@@ -26,11 +26,11 @@ const HomePage = () => {
                 <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
       </div>
-      <div className="container d-flex flex-wrap gap-5 ">
+      <div className="container d-flex flex-wrap gap-5 mb-3 ">
         {
         data.filter(e =>e.name.toLowerCase().includes(search.toLowerCase())).map((e,i)=> {
           return (
-            <RecipeCard key={i} name={e.name}  ingredients={e.ingredients} img={e.img} steps={e.steps} cookingTips={e.cookingTips} cuisine={e.cuisine} type={e.type} />
+            <RecipeCard key={i} name={e.name}  ingredients={e.ingredients} img={e.img} steps={e.steps} cookingTips={e.cookingTips} cuisine={e.cuisine} type={e.type} rating={e.rating} comments={e.comments} id={e._id} />
           )
         })}
       </div>
