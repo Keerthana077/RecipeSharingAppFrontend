@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
+import UrlContext from '../useContext/UrlContext'
 const Login = () => {
-
+  const url = useContext(UrlContext)
   const navigate = useNavigate()
   
   const formValidationFormik = yup.object({
@@ -19,7 +20,7 @@ const Login = () => {
     validationSchema : formValidationFormik,
     onSubmit :(values,{resetForm}) =>{
         // console.log(values)
-        axios.post('http://localhost:7000/api/users/login',values,{
+        axios.post(`${url.baseUrl}/login`,values,{
           headers:{
             'Content-Type' : 'application/json'
           },

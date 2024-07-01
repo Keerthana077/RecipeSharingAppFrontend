@@ -1,7 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
+import UrlContext from '../useContext/UrlContext'
 
 const RecipeCard = ({name,ingredients,img,steps,cookingTips,cuisine,type,rating,comments,id}) => {
+  const url = useContext(UrlContext)
   const [starCount,setStarCount] = useState(0)
   var person
   const [newComment,setNewComment] = useState("")
@@ -12,7 +14,7 @@ const RecipeCard = ({name,ingredients,img,steps,cookingTips,cuisine,type,rating,
      withCredentials : true
   };
 
-      axios.get('http://localhost:7000/api/users/profile',config )
+      axios.get(`${url.baseUrl}/profile`,config )
       .then(res =>person =res.data.user.username)
       .catch(err => console.error(err));
   

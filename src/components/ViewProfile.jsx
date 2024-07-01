@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NavBar from '../NavBar'
+import UrlContext from '../useContext/UrlContext'
 
 const ViewProfile = () => {
+  const url = useContext(UrlContext)
     const navigate = useNavigate()
     const [data,setData] = useState("")
   const config = {
@@ -13,7 +15,7 @@ const ViewProfile = () => {
      withCredentials : true
   };
  useEffect(()=>{
-    axios.get('http://localhost:7000/api/users/profile',config )
+    axios.get(`${url.baseUrl}/profile`,config )
     .then(res => setData(res.data.user))
     .catch(err => console.error(err));
  },[])

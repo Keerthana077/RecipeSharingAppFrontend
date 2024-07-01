@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NavBar from '../NavBar'
 import axios from 'axios'
+import UrlContext from '../useContext/UrlContext'
 
 const EditProfile = () => {
+  const url = useContext(UrlContext)
     const navigate = useNavigate()
     const [Data,setData] = useState({
       username:"",
@@ -18,7 +20,7 @@ const EditProfile = () => {
          withCredentials : true
       };
      useEffect(()=>{
-         axios.get('http://localhost:7000/api/users/profile',config )
+         axios.get(`${url.baseUrl}/profile`,config )
         .then(res => setData(res.data.user))
         .catch(err => console.error(err));
      },[])

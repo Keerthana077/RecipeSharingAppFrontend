@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
+import UrlContext from '../useContext/UrlContext'
 
 const Register = () => {
+    const url = useContext(UrlContext)
     const navigate = useNavigate()
     const formValidationFormik = yup.object({
-        username : yup.string().min(3,"Atleast 3 characters").max(8,"Maximum 8 characters allowed").required(),
-        email : yup.string().min(8,"Atleast 8 characters").max(15,"Maximum 15 characters allowed").required(),
+        username : yup.string().min(3,"Atleast 3 characters").max(12,"Maximum 12 characters allowed").required(),
+        email : yup.string().min(10,"Atleast 10 characters").max(25,"Maximum 25 characters allowed").required(),
         password : yup.string().required().min(8,"Need strong password").max(14,"Too long"),
         bio:yup.string(),
-        location:yup.string().min(3,"Atleast 3 characters").max(15,"Maximum 15 characters allowed").required()
+        location:yup.string().min(2,"Atleast 2 characters").max(15,"Maximum 15 characters allowed").required()
     })
     const formik = useFormik({
         initialValues : {
@@ -23,7 +25,7 @@ const Register = () => {
         },
         validationSchema : formValidationFormik,
         onSubmit :(values,{resetForm}) =>{
-            axios.post('http://localhost:7000/api/users/register',values).then(res=>console.log("Registered Successfully!!"))
+            axios.post(`${url.baseUrl}/register`,values).then(res=>console.log("Registered Successfully!!"))
             navigate('/login')
             resetForm()
         }

@@ -1,10 +1,12 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import UrlContext from '../useContext/UrlContext'
 
 const Logout = () => {
+  const url =useContext(UrlContext)
     const navigate = useNavigate()
-    axios.get('http://localhost:7000/api/users/logout',{
+    axios.get(`${url.baseUrl}/logout`,{
         headers : {
             "Content-Type" : 'application.json'
         },

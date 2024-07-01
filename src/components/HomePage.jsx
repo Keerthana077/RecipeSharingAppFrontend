@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import NavBar from "../NavBar";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
+import UrlContext from "../useContext/UrlContext";
 
 const HomePage = () => {
+  const url = useContext(UrlContext)
   const [data,setData] = useState([])
   const [search,setSearch] = useState("")
   const config = {
@@ -13,7 +15,7 @@ const HomePage = () => {
      withCredentials : true
   };
  useEffect(()=>{
-    axios.get('http://localhost:7000/api/users/allRecipes',config )
+    axios.get(`${url.baseUrl}/allRecipes`,config )
     .then(res => setData(res.data.recipe))
     .catch(err => console.error(err));
  },[])

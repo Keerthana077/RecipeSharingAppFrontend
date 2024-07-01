@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import UrlContext from '../useContext/UrlContext';
 
 const MyRecipesCard = ({name,ingredients,img,steps,cookingTips,cuisine,id,type}) => {
- 
+ const url = useContext(UrlContext)
   const [edit,setEdit] = useState(false)
   const [newname,setNewname] = useState(name)
   const [newing,setNewIng] = useState(ingredients)
@@ -14,7 +15,7 @@ const MyRecipesCard = ({name,ingredients,img,steps,cookingTips,cuisine,id,type})
   const [newtype,setNewType]=useState(type)
   const navigate = useNavigate()
   const handleRecipeDelete = ()=>{
-    axios.delete(`http://localhost:7000/api/users/recipe/${id}`,{headers: {
+    axios.delete(`${url.baseUrl}/recipe/${id}`,{headers: {
       'Content-Type' : 'application/json'
    },
    withCredentials : true} )
@@ -34,7 +35,7 @@ const MyRecipesCard = ({name,ingredients,img,steps,cookingTips,cuisine,id,type})
       type :newtype
 
     }
-        axios.put(`http://localhost:7000/api/users/recipe/${id}`,UpdatedData,{headers: {
+        axios.put(`${url.baseUrl}/recipe/${id}`,UpdatedData,{headers: {
           'Content-Type' : 'application/json'
       },
       withCredentials : true} )

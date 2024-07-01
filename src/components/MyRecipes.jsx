@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NavBar from '../NavBar'
 import MyRecipesCard from './MyRecipesCard'
 import axios from 'axios'
+import UrlContext from '../useContext/UrlContext'
 
 const MyRecipes = () => {
+  const url = useContext(UrlContext)
   const [data,setData] = useState([])
   const config = {
     headers: {
@@ -12,7 +14,7 @@ const MyRecipes = () => {
      withCredentials : true
   };
  useEffect(()=>{
-    axios.get('http://localhost:7000/api/users/myRecipes',config )
+    axios.get(`${url.baseUrl}/myRecipes`,config )
     .then(res => setData(res.data.recipe))
     .catch(err => console.error(err));
  },[])

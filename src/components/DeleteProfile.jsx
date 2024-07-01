@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import UrlContext from '../useContext/UrlContext'
 
 const DeleteProfile = () => {
+    const url =  useContext(UrlContext)
     const navigate =  useNavigate()
     const handleDelete = ()=>{
-            axios.delete('http://localhost:7000/api/users/profile',{headers: {
+            axios.delete(`${url.baseUrl}/profile`,{headers: {
                 'Content-Type' : 'application/json'
              },
              withCredentials : true} )
