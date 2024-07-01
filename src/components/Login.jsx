@@ -24,7 +24,7 @@ const Login = () => {
           headers:{
             'Content-Type' : 'application/json'
           },
-          withCredentials : true
+          // withCredentials : true
         }).then(res=>{
           console.log(res.data.token)
           navigate('/home')
