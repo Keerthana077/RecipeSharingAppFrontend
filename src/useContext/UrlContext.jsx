@@ -3,7 +3,7 @@
 import React, { createContext } from 'react'
 
 const UrlContext = createContext({
-    baseUrl : `http://localhost:7000/api/users`
+    baseUrl : `https://recipesharingappbackend.onrender.com/api/users/`
 })
 
 export default UrlContext
