@@ -3,7 +3,7 @@
 import React, { createContext } from 'react'
 
 const UrlContext = createContext({
-    baseUrl : `https://recipesharingappbackend.onrender.com/api/users/`
+    baseUrl : `https://recipesharingappbackend.onrender.com/api/users`
 })
 
 export default UrlContext
