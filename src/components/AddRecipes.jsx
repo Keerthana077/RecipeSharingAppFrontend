@@ -36,7 +36,7 @@ const AddRecipes = () => {
                 headers : {
                     "Content-Type" : 'application/json'
                 },
-                withCredentials :true
+                // withCredentials :true
             }).then(res=>console.log("Recipe added Successfully!!"))
             navigate('/home')
             resetForm()

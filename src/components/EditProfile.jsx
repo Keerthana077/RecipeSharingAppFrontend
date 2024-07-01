@@ -17,7 +17,7 @@ const EditProfile = () => {
         headers: {
             'Content-Type' : 'application/json'
          },
-         withCredentials : true
+        //  withCredentials : true
       };
      useEffect(()=>{
          axios.get(`${url.baseUrl}/profile`,config )

@@ -11,7 +11,7 @@ const RecipeCard = ({name,ingredients,img,steps,cookingTips,cuisine,type,rating,
     headers: {
         'Content-Type' : 'application/json'
      },
-     withCredentials : true
+    //  withCredentials : true
   };
 
       axios.get(`${url.baseUrl}/profile`,config )

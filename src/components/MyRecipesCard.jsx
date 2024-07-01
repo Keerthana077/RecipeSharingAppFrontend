@@ -38,7 +38,8 @@ const MyRecipesCard = ({name,ingredients,img,steps,cookingTips,cuisine,id,type})
         axios.put(`${url.baseUrl}/recipe/${id}`,UpdatedData,{headers: {
           'Content-Type' : 'application/json'
       },
-      withCredentials : true} )
+      // withCredentials : true
+    } )
       .then(res => console.log("successfully updated!!!",res))
       .catch(err => console.error(err));
       navigate('/home')

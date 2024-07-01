@@ -10,7 +10,8 @@ const DeleteProfile = () => {
             axios.delete(`${url.baseUrl}/profile`,{headers: {
                 'Content-Type' : 'application/json'
              },
-             withCredentials : true} )
+            //  withCredentials : true
+            } )
             .then(res => console.log(res))
             .catch(err => console.error(err));
         navigate('/')
