@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import NavBar from '../NavBar'
 import axios from 'axios'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 
 const EditProfile = () => {
   const url = useContext(UrlContext)
+  const {token} = useContext(TokenContext)
     const navigate = useNavigate()
     const [Data,setData] = useState({
       username:"",
@@ -15,7 +17,8 @@ const EditProfile = () => {
     })
     const config = {
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            token
          },
         //  withCredentials : true
       };
@@ -35,9 +38,11 @@ const EditProfile = () => {
         }
         // console.log(updatedData)
         axios.put('http://localhost:7000/api/users/profile',updatedData,{headers: {
-          'Content-Type' : 'application/json'
+          'Content-Type' : 'application/json',
+          token
       },
-      withCredentials : true} )
+      // withCredentials : true
+    } )
       // .then(res => console.log("profile updated successfully!!!"))
       navigate('/home')
       }

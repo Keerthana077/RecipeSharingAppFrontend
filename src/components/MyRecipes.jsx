@@ -3,15 +3,17 @@ import NavBar from '../NavBar'
 import MyRecipesCard from './MyRecipesCard'
 import axios from 'axios'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 
 const MyRecipes = () => {
   const url = useContext(UrlContext)
+  const {token} = useContext(TokenContext)
   const [data,setData] = useState([])
   const config = {
     headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        token
      },
-    //  withCredentials : true
   };
  useEffect(()=>{
     axios.get(`${url.baseUrl}/myRecipes`,config )

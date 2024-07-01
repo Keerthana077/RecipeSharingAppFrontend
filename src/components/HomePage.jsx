@@ -3,14 +3,17 @@ import NavBar from "../NavBar";
 import RecipeCard from "./RecipeCard";
 import axios from "axios";
 import UrlContext from "../useContext/UrlContext";
+import { TokenContext } from "../useContext/TokenContext";
 
 const HomePage = () => {
   const url = useContext(UrlContext)
+  const {token} = useContext(TokenContext)
   const [data,setData] = useState([])
   const [search,setSearch] = useState("")
   const config = {
     headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        token
      },
     //  withCredentials : true
   };

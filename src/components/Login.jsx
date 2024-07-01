@@ -4,8 +4,10 @@ import axios from 'axios'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 const Login = () => {
   const url = useContext(UrlContext)
+  const {setToken} = useContext(TokenContext)
   const navigate = useNavigate()
   
   const formValidationFormik = yup.object({
@@ -24,8 +26,8 @@ const Login = () => {
           headers:{
             'Content-Type' : 'application/json'
           },
-          // withCredentials : true
         }).then(res=>{
+          setToken(res.data.token)
           console.log(res.data.token)
           navigate('/home')
         })

@@ -1,15 +1,18 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 
 const RecipeCard = ({name,ingredients,img,steps,cookingTips,cuisine,type,rating,comments,id}) => {
   const url = useContext(UrlContext)
+  const {token} = useContext(TokenContext)
   const [starCount,setStarCount] = useState(0)
   var person
   const [newComment,setNewComment] = useState("")
   const config = {
     headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        token
      },
     //  withCredentials : true
   };

@@ -3,14 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NavBar from '../NavBar'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 
 const ViewProfile = () => {
   const url = useContext(UrlContext)
+  const {token} = useContext(TokenContext)
     const navigate = useNavigate()
     const [data,setData] = useState("")
   const config = {
     headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        token
      },
     //  withCredentials : true
   };

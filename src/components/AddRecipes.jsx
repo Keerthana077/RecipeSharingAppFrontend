@@ -5,10 +5,12 @@ import * as yup from 'yup'
 import NavBar from '../NavBar'
 import axios from 'axios'
 import UrlContext from '../useContext/UrlContext'
+import { TokenContext } from '../useContext/TokenContext'
 
 
 const AddRecipes = () => {
     const url = useContext(UrlContext)
+    const {token} = useContext(TokenContext)
     const navigate = useNavigate()
     const formValidationFormik = yup.object({
         name : yup.string().min(3,"Atleast 3 characters").max(15,"Maximum 15 characters allowed").required(),
@@ -34,7 +36,8 @@ const AddRecipes = () => {
         onSubmit :(values,{resetForm}) =>{
             axios.post(`${url.baseUrl}/recipe`,values,{
                 headers : {
-                    "Content-Type" : 'application/json'
+                    "Content-Type" : 'application/json',
+                    token
                 },
                 // withCredentials :true
             }).then(res=>console.log("Recipe added Successfully!!"))
