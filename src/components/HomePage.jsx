@@ -12,7 +12,7 @@ const HomePage = () => {
     headers: {
         'Content-Type' : 'application/json'
      },
-    //  withCredentials : true
+     withCredentials : false
   };
  useEffect(()=>{
     axios.get(`${url.baseUrl}/allRecipes`,config )
